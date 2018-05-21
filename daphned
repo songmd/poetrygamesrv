@@ -1,0 +1,4 @@
+#!/bin/bash -e
+source /var/www/gvenv/bin/activate
+cd /var/www/PoetryGameSrv
+daphne -b 127.0.0.1 -p 8192 PoetryGameSrv.asgi:application

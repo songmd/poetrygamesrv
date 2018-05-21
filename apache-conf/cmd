@@ -1,0 +1,83 @@
+daphne -b 127.0.0.1 -p 8192 PoetryGameSrv.asgi:application
+
+
+Ubuntu 创建开机自启动脚本的步骤如下：
+1) 将你的启动脚本复制到 /etc/init.d目录下
+以下假设你的脚本文件名为 test。
+
+2) 设置脚本文件的权限
+$ sudo chmod 755 /etc/init.d/test
+
+3) 执行如下命令将脚本放到启动脚本中去：
+$ cd /etc/init.d
+$ sudo update-rc.d test defaults 95
+
+
+首先修改MySQL的配置文件/etc/mysql/my.cnf：
+在[client]下追加：
+default-character-set=utf8
+在[mysqld]下追加：
+character-set-server=utf8
+在[mysql]下追加：
+default-character-set=utf8
+
+修改数据库字符集character-set-server=utf8mb4
+
+
+修改完毕后，使用如下命令之一重启mysql服务：
+service mysql restart
+/etc/init.d/mysql restart
+
+
+show variables like 'char%';
+
+
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server = utf8
+
+re.compile('（.+）')
+
+re.compile('\(.+\)')
+
+re.compile('/.+')
+
+
+把表默认的字符集和所有字符列（CHAR,VARCHAR,TEXT）改为新的字符集：
+ALTER TABLE tbl_name CONVERT TO CHARACTER SET character_name [COLLATE ...]
+如：ALTER TABLE rhesis_contest_appuser CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE rhesis_contest_appuser_questions CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+只是修改表的默认字符集：
+ALTER TABLE tbl_name DEFAULT CHARACTER SET character_name [COLLATE...];
+如：ALTER TABLE logtest DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+DATABASES = {
+    'default': {
+        #'ENGINE': 'sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql',
+        #'NAME': '/opt/media/session.db',                      # Or path to database file if using sqlite3.
+        'NAME': DATABASE_NAME,
+        'USER': 'root',                      # Not used with sqlite3.
+        'PASSWORD': DATABASE_PASSWORD,                  # Not used with sqlite3.
+        'HOST': DATABASE_HOST,                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': DATABASE_PORT,                      # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {'charset':'utf8mb4'},
+    },
+}
+
+
+create database poetry_game CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

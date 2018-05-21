@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@140.143.36.42:22">
+    <serverData>
+      <paths name="root@140.143.36.42:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/PoetryGameSrv" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="txyun">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/PoetryGameSrv" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/etc/apache2/sites-available" local="$PROJECT_DIR$/apache-conf" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/rhesis_contest/migrations" />
+            <excludedPath local="true" path="$PROJECT_DIR$/db.sqlite3" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
